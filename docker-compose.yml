@@ -1,0 +1,43 @@
+volumes:
+  HNG-nginx-logs:
+
+services:
+  nextcloud:
+    image: kefaslungu/hng-nextcloud
+    restart: always
+    environment:
+      - UPLOAD_MAX_FILESIZE=512M
+    networks:
+      - internal
+
+  nginx:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - HNG-nginx-logs:/var/log/nginx
+    depends_on:
+      - nextcloud
+    networks:
+      - internal
+
+  detector:
+    build: ./detector
+    restart: always
+    network_mode: "host"
+    privileged: true
+    volumes:
+      - /var/log/nginx:/var/log/nginx:ro  # CHANGED: Now points to your host logs
+      - /var/log/detector:/var/log/detector
+    environment:
+      - PYTHONUNBUFFERED=1
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+
+networks:
+  internal:
+    driver: bridge

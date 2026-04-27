@@ -1,0 +1,55 @@
+# Log file path (inside container, mounted from volume)
+log_path: /var/log/nginx/hng-access.log
+
+# Audit log path
+audit_log: /var/log/detector/audit.log
+
+# Sliding window duration in seconds
+sliding_window_seconds: 60
+
+# Baseline rolling window in minutes
+baseline_window_minutes: 30
+
+# Baseline recalculation interval in seconds
+baseline_recalc_interval: 60
+
+# Z-score threshold for anomaly detection
+zscore_threshold: 3.0
+
+# Rate multiplier threshold (fires if rate > N * baseline_mean)
+rate_multiplier_threshold: 5.0
+
+# Error rate multiplier for tightening thresholds
+error_rate_multiplier: 3.0
+
+# Minimum baseline mean (floor value — prevents division by zero)
+baseline_floor_mean: 1.0
+
+# Minimum baseline stddev (floor value)
+baseline_floor_stddev: 0.5
+
+# Ban backoff schedule in minutes
+ban_schedule_minutes: [10, 30, 120]
+# After all backoff steps exhausted, ban is permanent
+
+# Dashboard refresh interval in seconds
+dashboard_refresh_seconds: 3
+
+# Dashboard port
+dashboard_port: 8080
+
+# Slack webhook URL — set this to your actual webhook
+slack_webhook_url: "YOUR_SLACK_WEBHOOK_URL_HERE "
+
+# Minimum requests before baseline is considered valid
+baseline_min_samples: 10
+
+# IPs that must NEVER be blocked — grader C2 agent
+whitelist_ips:
+  - "127.0.0.1"
+  - "::1"
+  - "104.21.72.161"      # kefaslungu.name.ng (Cloudflare)
+  - "172.67.153.35"      # kefaslungu.name.ng (Cloudflare)
+  - "20.121.201.73"      # ws.kefaslungu.name.ng (WebSocket agent)
+  - "2606:4700:3034::6815:48a1"   # IPv6
+  - "2606:4700:3037::ac43:9923"   # IPv6
