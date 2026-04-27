@@ -11,7 +11,7 @@ A production-grade DevSecOps security daemon that watches all incoming HTTP traf
 | **Metrics Dashboard** | http://monitor.oluwahiyanu.mooo.com:8080 |
 | **Server IP** | `52.225.37.148` |
 | **GitHub Repo** | https://github.com/oluwahiyanu/hng-stage3 |
-| **Blog Post** | _INSERT YOUR BLOG LINK HERE_ |
+| **Blog Post** | https://medium.com/@iyanurtm/how-i-built-a-real-time-anomaly-detection-engine-from-scratch-1785b5525bb1 |
 
 ---
 
