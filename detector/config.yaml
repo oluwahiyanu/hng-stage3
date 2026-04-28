@@ -39,7 +39,7 @@ dashboard_refresh_seconds: 3
 dashboard_port: 8080
 
 # Slack webhook URL — set this to your actual webhook
-slack_webhook_url: "YOUR_SLACK_WEBHOOK_URL_HERE "
+slack_webhook_url: "REDACTED_FOR_SECURITY"
 
 # Minimum requests before baseline is considered valid
 baseline_min_samples: 10
